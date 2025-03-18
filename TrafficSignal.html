@@ -1,0 +1,61 @@
+<HTML>
+    <head>
+        <style>
+            .signalStand {
+                height: 500px;
+                width: 200px;
+                background-color: black;
+                margin: 50px;
+            }
+            .redSignal {
+                background-color: red !important;
+            }
+            .greenSignal {
+                background-color: green !important;
+            }
+            .orangeSignal {
+                background-color: orange !important;
+            }
+
+            .dot {
+                margin-left: 39px;
+                margin-top: 20px;
+                height: 125px;
+                width: 125px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        </style>
+        <script type="text/javascript">
+            function changeToGreen() {
+                greenObj.classList.add('greenSignal');
+                redObj.classList.remove('redSignal');
+                setTimeout(changeToOrange, 3000);
+            }
+            function changeToOrange() {
+                yellowObj.classList.add('orangeSignal');
+                greenObj.classList.remove('greenSignal');
+                setTimeout(startTrafficSignal, 1000);
+            }
+            function startTrafficSignal() {
+                // redObj.style.backgroundColor = 'Red';
+                redObj.classList.add('redSignal');
+                yellowObj.classList.remove('orangeSignal');
+                setTimeout(changeToGreen, 5000);
+            }
+        </script>
+    </head>
+    <body onload="startTrafficSignal()">
+        <div class="signalStand">
+            <span class="dot" id="red"></span>
+            <span class="dot" id="orange"></span>
+            <span class="dot" id="green"></span>
+        </div>
+    </body>
+    <script>
+        var redObj = document.getElementById('red');
+        var greenObj = document.getElementById('green');
+        var yellowObj = document.getElementById('orange');
+    </script>
+</HTML>
